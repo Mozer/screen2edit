@@ -48,10 +48,9 @@ Notes:
 
 
 ## Klein inference speed-up (INT8 checkpoint, optional)
-To speed up inference of the klein-9b, I recommend using the int8 version. On the 3000 series, it is 2 times faster than FP8 and 3-4 times faster than gguf. There is also an increase on the 4000 series, but not so much.
-klein-9b int8 - 3 seconds
+To speed up inference of the klein-9b, I recommend using the int8 version. On the 3000 series, it is 2 times faster than FP8 and 3-4 times faster than gguf. There is also an speed-up on the 4000 series, but not so much (4000 is already fast with fp8).
 
-1024x1224, 4 steps, at 3090:
+1024x1024, 4 steps, at 3090:
 text2image int8 - 3.31 seconds
 image2image int8 - 6.41 seconds
 image2image fp8 - 12.84 seconds
