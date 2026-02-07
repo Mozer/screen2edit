@@ -1,6 +1,6 @@
 # screen2edit
 
-Script that takes a screenshot of any active window using a hotkey and sends it to comfortable+klein-9b API. Displays an image in the next window.
+Script that takes a screenshot of any active window using a hotkey and sends it to comfyUI+klein-9b API. Displays an image in the next window.
 
 It works very fast - 7 seconds (checkpoint klein-9b-int8) with 3090
 
@@ -23,8 +23,8 @@ In fp8 before that, I had twice as long (12.84 s for edit mode).
 The increase is achieved through the use of int8 cuda cores. Applicable for 3000 series and later. On the 4000 series, there is also an increase relative to fp8, but not so much.
 
 Optionally, you need: triton-windows (it will be a little faster, but it will boost without it. My model compile node didn't start, maybe I need a fresher torch/cuda. I have torch2.6.0+cu126)
-We need a comfortable kitchen:
-C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\python_embeded >python.exe -m pip install comfortable-kitchen
+We need a comfy kitchen:
+`C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\python_embeded>python.exe -m pip install comfy-kitchen`
 
 Installing a node via manager - install via git url 
 https://github.com/BobJohnson24/ComfyUI-Flux2-INT8
@@ -42,7 +42,7 @@ cd screen2edit
 pip install -r requirements.txt
 ```
 
-inside screen2edit.py edit your paths to comfi
+inside screen2edit.py edit your paths to comfyui
 ```
 Configuration
 SAVE_PATH = r'C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\input\screenshot.jpg'
@@ -56,13 +56,13 @@ CROP_LEFT = 10      #REMOVE PX FROM LEFT
 CROP_RIGHT = 10     #REMOVE PX FROM RIGHT
 ```
 
-- import workflow/workflow.json in comfi (it's for fp8). Or workflow_klein_9b_int8.json
+- import workflow/workflow.json in comfy (it's for fp8). Or workflow_klein_9b_int8.json
 - check the functionality
-- comfortable - File - Export (API) - put workflow/workflow.json in the same place
+- comfyUI - File - Export (API) - put workflow/workflow.json in the same place
 
 ## Launching screen2edit
 - double click on screen2edit.py
-- open the desired window with the game or browser, press Alt+x to make a screenshot and send it to comfi (I have not tested full-screen mode with complex 3D games on unity or directx. xs, whether it will take screenshots. There shouldn't be any problems with games in windowed mode)
+- open the desired window with the game or browser, press Alt+x to make a screenshot and send it to comfy (I have not tested full-screen mode with complex 3D games on unity or directx. xs, whether it will take screenshots. There shouldn't be any problems with games in windowed mode)
 - the window with the finished picture will appear by itself after some time.
 
 Notes:
