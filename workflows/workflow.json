@@ -1,0 +1,299 @@
+{
+  "141": {
+    "inputs": {
+      "image": "screenshot.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "156": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "157": {
+    "inputs": {
+      "noise": [
+        "159",
+        0
+      ],
+      "guider": [
+        "163",
+        0
+      ],
+      "sampler": [
+        "156",
+        0
+      ],
+      "sigmas": [
+        "164",
+        0
+      ],
+      "latent_image": [
+        "162",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "158": {
+    "inputs": {
+      "samples": [
+        "157",
+        0
+      ],
+      "vae": [
+        "161",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "159": {
+    "inputs": {
+      "noise_seed": 3
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "160": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "161": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "162": {
+    "inputs": {
+      "width": [
+        "167",
+        0
+      ],
+      "height": [
+        "167",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "Empty Flux 2 Latent"
+    }
+  },
+  "163": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "171",
+        0
+      ],
+      "positive": [
+        "168:77",
+        0
+      ],
+      "negative": [
+        "168:76",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFGGuider"
+    }
+  },
+  "164": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "167",
+        0
+      ],
+      "height": [
+        "167",
+        1
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2Scheduler"
+    }
+  },
+  "165": {
+    "inputs": {
+      "text": "Turn this into a photo, soft dim lighting. Add film grain, bokeh, shallow depth of field, retro photo, soft focus, low contrast. Add blur, motion blur. face swap woman with Emm4w woman, dark brown lose hair.",
+      "clip": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "166": {
+    "inputs": {
+      "conditioning": [
+        "165",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "167": {
+    "inputs": {
+      "image": [
+        "170",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "169": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "170": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "megapixels": 1.1,
+      "resolution_steps": 1,
+      "image": [
+        "141",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "ImageScaleToTotalPixels"
+    }
+  },
+  "171": {
+    "inputs": {
+      "lora_name": "f2k_Emm4w_5200s.safetensors",
+      "strength_model": 1.5,
+      "model": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "172": {
+    "inputs": {
+      "lora_name": "f2k_9b_NSFW-klein.safetensors",
+      "strength_model": 0,
+      "model": [
+        "169",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoraLoaderModelOnly"
+    }
+  },
+  "173": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "158",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "168:76": {
+    "inputs": {
+      "conditioning": [
+        "166",
+        0
+      ],
+      "latent": [
+        "168:78",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "168:78": {
+    "inputs": {
+      "pixels": [
+        "170",
+        0
+      ],
+      "vae": [
+        "161",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "168:77": {
+    "inputs": {
+      "conditioning": [
+        "165",
+        0
+      ],
+      "latent": [
+        "168:78",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  }
+}
