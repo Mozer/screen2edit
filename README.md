@@ -57,13 +57,13 @@ image2image fp8 - 12.84 seconds
 
 The increase is achieved through the use of int8 cuda cores. Applicable for 3000 series and later. On the 4000 series, there is also an increase relative to fp8, but not so much.
 
-Optionally, you need: triton-windows (it will be a little faster, but it will boost without it. My model compile node didn't start, maybe I need a fresher torch/cuda. I have torch2.6.0+cu126)
-We need a comfy kitchen:
+Optionally, you need: triton-windows (it will be a little faster, but int8 will speed-up even without it. My model compile node didn't work, maybe I need a newer torch/cuda. I have torch2.6.0+cu126)
+You need a comfy kitchen:
 `C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\python_embeded>python.exe -m pip install comfy-kitchen`
 
-Installing a node via manager - install via git url 
+Install node via Manager - install via git url 
 https://github.com/BobJohnson24/ComfyUI-Flux2-INT8
 
-int8 model (put in diffusion_models): https://huggingface.co/bertbobson/FLUX.2-klein-9B-INT8-Comfy/blob/main/flux-2-klein-schnell-9b-INT8V2.safetensors
+int8 model (put inside diffusion_models): https://huggingface.co/bertbobson/FLUX.2-klein-9B-INT8-Comfy/blob/main/flux-2-klein-schnell-9b-INT8V2.safetensors
 
-To load the INT8 model, you need the node 'Load Diffusion Model INT8 (W8A8)', it is inside. There may be some problems with some loras. There are no problems with my loras from onetrainer.
+To load the INT8 model, you need the node 'Load Diffusion Model INT8 (W8A8)', it is inside Flux2-INT8 nodes. There may be some problems with some loras. There are no problems with my loras from onetrainer.
