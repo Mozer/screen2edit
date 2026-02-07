@@ -1,17 +1,17 @@
 # screen2edit
 
-Script that takes a screenshot of any active window using a hotkey and sends it to comfortable+klein-9b. Displays an image in the next window.
+Script that takes a screenshot of any active window using a hotkey and sends it to comfortable+klein-9b API. Displays an image in the next window.
 
 It works very fast - 7 seconds (checkpoint klein-9b-int8) with 3090
 
-#Examples of prompts:
+## Examples of prompts:
 1. Improve graphics in visual novels or other turn-based games: `Turn this into a photo, soft dim lighting. Add film grain, bokeh, shallow depth of field, retro photo, soft focus, low contrast. Add blur, motion blur. face swap woman with Emm4w woman, dark brown lose hair.`
 2. Colorize manga in the browser: `Colorize manga. Woman has a light pink jacket with white shirt and with a red ribbon, white high socks and dark brown hair. Man has grey jacket and short black hair`
 3. Character replacement: `face swap woman with Emm4w woman, lose brown hair` (need laura or a second attached face picture)
 4. Changing clothes: `now she is wearing a bikini`
 5. Anime photo: `change style to Ghibli studio style`
 
-#Acceleration of work (INT8 checkpoint)
+## Acceleration of work (INT8 checkpoint)
 To speed up the work of the klein-9b, I recommend using the int8 version. On the 3000 series, it is 2 times faster than FP8 and 3-4 times faster than gguf. There is also an increase on the 4000 series, but not so much.
 klein-9b int8 - picture in 3 seconds
 
@@ -31,12 +31,12 @@ https://github.com/BobJohnson24/ComfyUI-Flux2-INT8
 
 int8 model (put in diffusion_models): https://huggingface.co/bertbobson/FLUX.2-klein-9B-INT8-Comfy/blob/main/flux-2-klein-schnell-9b-INT8V2.safetensors
 
-To load the ENT, you need the node 'Load Diffusion Model INT8 (W8A8)', it is inside. There may be problems with some lures. There are no problems with my lores from onetrainer.
+To load the INT8 model, you need the node 'Load Diffusion Model INT8 (W8A8)', it is inside. There may be problems with some lures. There are no problems with my lores from onetrainer.
 
 
-#Installing screen2edit
+## Installing screen2edit
 
-``cmd in any folder
+```cmd in any folder
 git clone https://github.com/Mozer/screen2edit
 cd screen2edit
 pip install -r requirements.txt```
@@ -57,7 +57,7 @@ CROP_RIGHT = 10     #REMOVE PX FROM RIGHT```
 - check the functionality
 - comfortable - File - Export (API) - put workflow/workflow.json in the same place
 
-#Launching screen2edit
+## Launching screen2edit
 - double click on screen2edit.py
 - open the desired window with the game or browser, press Alt+x to make a screenshot and send it to comfi (I have not tested full-screen mode with complex 3D games on unity or directx. xs, whether it will take screenshots. There shouldn't be any problems with games in windowed mode)
 - the window with the finished picture will appear by itself after some time.
