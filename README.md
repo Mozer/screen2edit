@@ -11,28 +11,6 @@ It works very fast - 7 seconds (checkpoint klein-9b-int8) with 3090
 4. Changing clothes: `now she is wearing a bikini`
 5. Anime photo: `change style to Ghibli studio style`
 
-## Acceleration of work (INT8 checkpoint)
-To speed up the work of the klein-9b, I recommend using the int8 version. On the 3000 series, it is 2 times faster than FP8 and 3-4 times faster than gguf. There is also an increase on the 4000 series, but not so much.
-klein-9b int8 - picture in 3 seconds
-
-1024x1224, 4 steps, at 3090:
-text2image - 3.31 seconds
-image2image - 6.41 seconds
-In fp8 before that, I had twice as long (12.84 s for edit mode).
-
-The increase is achieved through the use of int8 cuda cores. Applicable for 3000 series and later. On the 4000 series, there is also an increase relative to fp8, but not so much.
-
-Optionally, you need: triton-windows (it will be a little faster, but it will boost without it. My model compile node didn't start, maybe I need a fresher torch/cuda. I have torch2.6.0+cu126)
-We need a comfy kitchen:
-`C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\python_embeded>python.exe -m pip install comfy-kitchen`
-
-Installing a node via manager - install via git url 
-https://github.com/BobJohnson24/ComfyUI-Flux2-INT8
-
-int8 model (put in diffusion_models): https://huggingface.co/bertbobson/FLUX.2-klein-9B-INT8-Comfy/blob/main/flux-2-klein-schnell-9b-INT8V2.safetensors
-
-To load the INT8 model, you need the node 'Load Diffusion Model INT8 (W8A8)', it is inside. There may be problems with some lures. There are no problems with my lores from onetrainer.
-
 
 ## Installing screen2edit
 
@@ -67,3 +45,26 @@ CROP_RIGHT = 10     #REMOVE PX FROM RIGHT
 
 Notes:
 - if the small text is hard to read, remove the lore, increase the screenshot crop on top and sides. Increasing the resolution of the output image helps, but not always. Optimal 1.1 - 1.2 Mpx.
+
+
+## Klein inference speed-up (INT8 checkpoint, optional)
+To speed up inference of the klein-9b, I recommend using the int8 version. On the 3000 series, it is 2 times faster than FP8 and 3-4 times faster than gguf. There is also an increase on the 4000 series, but not so much.
+klein-9b int8 - 3 seconds
+
+1024x1224, 4 steps, at 3090:
+text2image int8 - 3.31 seconds
+image2image int8 - 6.41 seconds
+image2image fp8 - 12.84 seconds
+
+The increase is achieved through the use of int8 cuda cores. Applicable for 3000 series and later. On the 4000 series, there is also an increase relative to fp8, but not so much.
+
+Optionally, you need: triton-windows (it will be a little faster, but it will boost without it. My model compile node didn't start, maybe I need a fresher torch/cuda. I have torch2.6.0+cu126)
+We need a comfy kitchen:
+`C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\python_embeded>python.exe -m pip install comfy-kitchen`
+
+Installing a node via manager - install via git url 
+https://github.com/BobJohnson24/ComfyUI-Flux2-INT8
+
+int8 model (put in diffusion_models): https://huggingface.co/bertbobson/FLUX.2-klein-9B-INT8-Comfy/blob/main/flux-2-klein-schnell-9b-INT8V2.safetensors
+
+To load the INT8 model, you need the node 'Load Diffusion Model INT8 (W8A8)', it is inside. There may be some problems with some loras. There are no problems with my loras from onetrainer.
