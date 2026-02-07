@@ -39,10 +39,12 @@ To load the INT8 model, you need the node 'Load Diffusion Model INT8 (W8A8)', it
 ```cmd in any folder
 git clone https://github.com/Mozer/screen2edit
 cd screen2edit
-pip install -r requirements.txt```
+pip install -r requirements.txt
+```
 
 inside screen2edit.py edit your paths to comfi
-```Configuration
+```
+Configuration
 SAVE_PATH = r'C:\DATA\SD\ComfyUI_windows_portable_nvidia\ComfyUI_windows_portable\ComfyUI\input\screenshot.jpg'
 PROMPT_URL = 'http://127.0.0.1:8188/prompt'
 HISTORY_URL = 'http://127.0.0.1:8188/history?max_items=64'
@@ -51,7 +53,8 @@ VIEW_URL_BASE = 'http://127.0.0.1:8188/view'
 CROP_TOP = 50       #REMOVE PX FROM TOP
 CROP_BOTTOM = 10    #REMOVE PX FROM BOTTOM
 CROP_LEFT = 10      #REMOVE PX FROM LEFT
-CROP_RIGHT = 10     #REMOVE PX FROM RIGHT```
+CROP_RIGHT = 10     #REMOVE PX FROM RIGHT
+```
 
 - import workflow/workflow.json in comfi (it's for fp8). Or workflow_klein_9b_int8.json
 - check the functionality
